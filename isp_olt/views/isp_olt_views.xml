@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_isp_olt_tree" model="ir.ui.view">
+        <field name="name">isp.olt.tree</field>
+        <field name="model">isp.olt</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="node_id" />
+                <field name="vendor" />
+                <field name="model" />
+                <field name="host" />
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_isp_olt_form" model="ir.ui.view">
+        <field name="name">isp.olt.form</field>
+        <field name="model">isp.olt</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_test_connection"
+                        type="object"
+                        string="Test connection"
+                        class="oe_highlight"
+                    />
+                    <field name="active" invisible="1" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="node_id" />
+                            <field name="vendor" />
+                            <field name="model" />
+                            <field name="state" />
+                        </group>
+                        <group>
+                            <field name="host" />
+                            <field name="port" />
+                            <field name="username" />
+                            <field name="password" />
+                            <field name="snmp_community" />
+                        </group>
+                    </group>
+                    <separator string="ONUs" />
+                    <field name="onu_ids">
+                        <list>
+                            <field name="name" />
+                            <field name="olt_port" />
+                            <field name="olt_pon" />
+                            <field name="partner_id" />
+                            <field name="state" />
+                            <field name="rx_power" />
+                            <field name="last_seen" />
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_isp_olt_search" model="ir.ui.view">
+        <field name="name">isp.olt.search</field>
+        <field name="model">isp.olt</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="host" />
+                <filter
+                    string="Online"
+                    name="online"
+                    domain="[('state', '=', 'online')]"
+                />
+                <filter
+                    string="Errors"
+                    name="errors"
+                    domain="[('state', 'in', ('error', 'wrong_credentials'))]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Vendor"
+                        name="group_vendor"
+                        context="{'group_by': 'vendor'}"
+                    />
+                    <filter
+                        string="Node"
+                        name="group_node"
+                        context="{'group_by': 'node_id'}"
+                    />
+                    <filter
+                        string="State"
+                        name="group_state"
+                        context="{'group_by': 'state'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_isp_olt_profile_tree" model="ir.ui.view">
+        <field name="name">isp.olt.profile.tree</field>
+        <field name="model">isp.olt.profile</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="vendor" />
+                <field name="onu_template" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_isp_olt_profile_form" model="ir.ui.view">
+        <field name="name">isp.olt.profile.form</field>
+        <field name="model">isp.olt.profile</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="vendor" />
+                        </group>
+                        <group>
+                            <field name="onu_template" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_isp_olt" model="ir.actions.act_window">
+        <field name="name">OLTs</field>
+        <field name="res_model">isp.olt</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('active', '=', True)]</field>
+    </record>
+
+    <record id="action_isp_olt_profile" model="ir.actions.act_window">
+        <field name="name">Traffic Profiles</field>
+        <field name="res_model">isp.olt.profile</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_isp_onu" model="ir.actions.act_window">
+        <field name="name">ONUs</field>
+        <field name="res_model">isp.onu</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_isp_olt"
+        name="OLTs"
+        parent="isp_network_node.menu_isp_infrastructure"
+        action="action_isp_olt"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_isp_onu"
+        name="ONUs"
+        parent="isp_network_node.menu_isp_infrastructure"
+        action="action_isp_onu"
+        sequence="15"
+    />
+
+    <menuitem
+        id="menu_isp_olt_profile"
+        name="Traffic Profiles"
+        parent="isp_network_node.menu_isp_infrastructure"
+        action="action_isp_olt_profile"
+        sequence="40"
+    />
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_res_partner_isp_suspension_form" model="ir.ui.view">
+        <field name="name">res.partner.isp.suspension.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="isp_customer.view_res_partner_isp_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='isp']" position="inside">
+                <separator string="Suspension events" />
+                <field name="suspension_event_ids">
+                    <list readonly="1">
+                        <field name="name" />
+                        <field name="event_type" />
+                        <field name="state" />
+                        <field name="error_message" />
+                        <field name="execute_date" />
+                        <field name="executed_by" />
+                    </list>
+                </field>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_isp_suspension_buttons" model="ir.ui.view">
+        <field name="name">res.partner.isp.suspension.buttons</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button
+                    name="action_isp_cutoff"
+                    type="object"
+                    string="Cut off service"
+                    icon="fa-stop-circle"
+                    confirm="Cut off the service of this customer? The ONU will be deactivated on the OLT."
+                    groups="base.group_system"
+                />
+                <button
+                    name="action_isp_reconnect"
+                    type="object"
+                    string="Reconnect service"
+                    icon="fa-play-circle"
+                    confirm="Reconnect the service of this customer? The ONU will be reactivated on the OLT."
+                    groups="base.group_system"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_res_partner_isp_form" model="ir.ui.view">
+        <field name="name">res.partner.isp.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                <field name="isp_customer" invisible="1" readonly="0" />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="ISP" name="isp" invisible="not isp_customer">
+                    <group>
+                        <group>
+                            <field name="isp_client_no" />
+                            <field name="isp_plan_id" />
+                            <field name="isp_status" />
+                            <field name="installation_date" />
+                            <field name="cutoff_date" />
+                        </group>
+                        <group>
+                            <field name="node_id" />
+                            <field name="ip_pool_id" />
+                            <field name="ip_address_id" />
+                            <field name="onu_serial" />
+                            <field name="service_address" />
+                            <field name="install_tech_id" />
+                        </group>
+                    </group>
+                    <separator string="History" />
+                    <field name="isp_history_ids" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_isp_search" model="ir.ui.view">
+        <field name="name">res.partner.isp.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[1]" position="before">
+                <filter
+                    string="ISP Customers"
+                    name="isp_customers"
+                    domain="[('isp_customer', '=', True)]"
+                />
+            </xpath>
+            <xpath expr="//filter[1]" position="after">
+                <separator />
+                <filter
+                    string="New / Pending"
+                    name="isp_new_pending"
+                    domain="[('isp_customer', '=', True), ('isp_status', '=', 'new_pending')]"
+                />
+                <filter
+                    string="Active"
+                    name="isp_active"
+                    domain="[('isp_customer', '=', True), ('isp_status', '=', 'active')]"
+                />
+                <filter
+                    string="Suspended"
+                    name="isp_suspended"
+                    domain="[('isp_customer', '=', True), ('isp_status', '=', 'suspended_cutoff')]"
+                />
+                <filter
+                    string="Offline"
+                    name="isp_offline"
+                    domain="[('isp_customer', '=', True), ('isp_status', '=', 'offline')]"
+                />
+                <filter
+                    string="Cancelled"
+                    name="isp_cancelled"
+                    domain="[('isp_customer', '=', True), ('isp_status', '=', 'cancelled')]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="ISP Status"
+                        name="group_isp_status"
+                        context="{'group_by': 'isp_status'}"
+                    />
+                    <filter
+                        string="Plan"
+                        name="group_isp_plan"
+                        context="{'group_by': 'isp_plan_id'}"
+                    />
+                    <filter
+                        string="Node"
+                        name="group_isp_node"
+                        context="{'group_by': 'node_id'}"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_isp_customer" model="ir.actions.act_window">
+        <field name="name">ISP Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="context">{'default_isp_customer': True}</field>
+        <field name="domain">[('isp_customer', '=', True)]</field>
+        <field name="search_view_id" ref="view_res_partner_isp_search" />
+    </record>
+
+    <menuitem
+        id="menu_isp_customers"
+        name="Customers"
+        parent="isp_network_node.menu_isp_root"
+        action="action_isp_customer"
+        sequence="5"
+    />
+</odoo>

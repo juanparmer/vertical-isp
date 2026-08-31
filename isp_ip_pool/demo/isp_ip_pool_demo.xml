@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="isp_ip_pool_office" model="isp.ip.pool">
+        <field name="name">Pool Oficina Central</field>
+        <field name="network_address">10.10.0.0/28</field>
+        <field name="ip_version">v4</field>
+        <field name="gateway">10.10.0.1</field>
+        <field name="dns1">8.8.8.8</field>
+        <field name="dns2">8.8.4.4</field>
+    </record>
+
+    <record id="isp_ip_pool_manizales" model="isp.ip.pool">
+        <field name="name">Pool Manizales Sur</field>
+        <field name="network_address">10.11.0.0/30</field>
+        <field name="ip_version">v4</field>
+        <field name="gateway">10.11.0.1</field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <odoo noupdate="1">
+        <record id="cron_isp_generate_addresses" model="ir.cron">
+            <field name="name">ISP: Generate IP addresses</field>
+            <field name="model_id" ref="model_isp_ip_pool" />
+            <field name="state">code</field>
+            <field name="code">model._cron_generate_addresses()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+        </record>
+    </odoo>
+</odoo>

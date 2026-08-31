@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="isp_customer_demo" model="res.partner">
+        <field name="name">Valery Rosales</field>
+        <field name="is_company" eval="False" />
+        <field name="isp_customer" eval="True" />
+        <field name="isp_status">active</field>
+        <field name="isp_plan_id" ref="isp_service_plan.product_isp_plan_20mb" />
+        <field name="node_id" ref="isp_network_node.isp_network_node_manizales" />
+        <field name="ip_pool_id" ref="isp_ip_pool.isp_ip_pool_manizales" />
+        <field name="onu_serial">43445443AF955212</field>
+        <field name="service_address">Cra 23 # 58-14, Manizales</field>
+        <field name="installation_date">2026-07-14</field>
+        <field name="install_tech_id" ref="base.user_admin" />
+    </record>
+
+    <record id="isp_onu_valery" model="isp.onu">
+        <field name="name">43445443AF955212</field>
+        <field name="olt_id" ref="isp_olt.isp_olt_central" />
+        <field name="olt_port">0/1</field>
+        <field name="olt_pon">1</field>
+        <field name="partner_id" ref="isp_customer_demo" />
+        <field name="state">active</field>
+        <field name="rx_power">-18.5</field>
+    </record>
+
+    <record id="isp_customer_demo2" model="res.partner">
+        <field name="name">Diego Arcos</field>
+        <field name="is_company" eval="False" />
+        <field name="isp_customer" eval="True" />
+        <field name="isp_status">new_pending</field>
+        <field name="isp_plan_id" ref="isp_service_plan.product_isp_plan_50mb" />
+        <field name="node_id" ref="isp_network_node.isp_network_node_pereira" />
+        <field name="ip_pool_id" ref="isp_ip_pool.isp_ip_pool_office" />
+        <field name="onu_serial">CAF95521C0100A</field>
+        <field name="service_address">Av. 30 de Agosto # 82-05, Pereira</field>
+    </record>
+
+    <record id="isp_onu_diego" model="isp.onu">
+        <field name="name">CAF95521C0100A</field>
+        <field name="olt_id" ref="isp_olt.isp_olt_central" />
+        <field name="olt_port">0/1</field>
+        <field name="olt_pon">2</field>
+        <field name="partner_id" ref="isp_customer_demo2" />
+        <field name="state">inactive</field>
+    </record>
+
+    <record id="isp_customer_demo3" model="res.partner">
+        <field name="name">Luisa Fernández</field>
+        <field name="is_company" eval="False" />
+        <field name="isp_customer" eval="True" />
+        <field name="isp_status">active</field>
+        <field name="isp_plan_id" ref="isp_service_plan.product_isp_plan_100mb" />
+        <field name="node_id" ref="isp_network_node.isp_network_node_manizales" />
+        <field name="ip_pool_id" ref="isp_ip_pool.isp_ip_pool_manizales" />
+        <field name="onu_serial">48575443706234F5</field>
+        <field name="service_address">Av. Santander # 12-08, Manizales</field>
+        <field name="installation_date">2026-08-01</field>
+        <field name="install_tech_id" ref="base.user_admin" />
+    </record>
+
+    <record id="isp_onu_luisa" model="isp.onu">
+        <field name="name">48575443706234F5</field>
+        <field name="olt_id" ref="isp_olt.isp_olt_huawei" />
+        <field name="olt_port">0/2</field>
+        <field name="olt_pon">3</field>
+        <field name="partner_id" ref="isp_customer_demo3" />
+        <field name="state">active</field>
+        <field name="rx_power">-18.4</field>
+    </record>
+
+    <record id="isp_customer_demo4" model="res.partner">
+        <field name="name">Carlos Marín</field>
+        <field name="is_company" eval="False" />
+        <field name="isp_customer" eval="True" />
+        <field name="isp_status">suspended_cutoff</field>
+        <field name="isp_plan_id" ref="isp_service_plan.product_isp_plan_20mb" />
+        <field name="node_id" ref="isp_network_node.isp_network_node_colombia" />
+        <field name="ip_pool_id" ref="isp_ip_pool.isp_ip_pool_office" />
+        <field name="onu_serial">4457464300AA22B1</field>
+        <field name="service_address">Cl 30 # 18-42, Manizales</field>
+        <field name="installation_date">2026-05-20</field>
+        <field name="cutoff_date">2026-08-20</field>
+    </record>
+
+    <record id="isp_onu_carlos" model="isp.onu">
+        <field name="name">4457464300AA22B1</field>
+        <field name="olt_id" ref="isp_olt.isp_olt_huawei" />
+        <field name="olt_port">0/4</field>
+        <field name="olt_pon">1</field>
+        <field name="partner_id" ref="isp_customer_demo4" />
+        <field name="state">inactive</field>
+        <field name="rx_power">-24.1</field>
+    </record>
+</odoo>

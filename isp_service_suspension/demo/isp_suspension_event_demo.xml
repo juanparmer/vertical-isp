@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="isp_suspension_event_demo" model="isp.suspension.event">
+        <field name="partner_id" ref="isp_customer.isp_customer_demo" />
+        <field name="event_type">reconnect</field>
+        <field name="state">success</field>
+        <field name="onu_serial">43445443AF955212</field>
+    </record>
+
+    <record id="isp_suspension_event_demo_error" model="isp.suspension.event">
+        <field name="partner_id" ref="isp_customer.isp_customer_demo" />
+        <field name="event_type">cutoff</field>
+        <field name="state">error</field>
+        <field name="onu_serial">43445443AF955212</field>
+        <field
+            name="error_message"
+        >No se pudo eliminar el equipo de la OLT 43445443AF955212: device not found</field>
+    </record>
+</odoo>

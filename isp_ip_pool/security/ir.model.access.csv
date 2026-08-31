@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_isp_ip_pool,ISP IP Pool,model_isp_ip_pool,base.group_user,1,1,1,1
+access_isp_ip_address,ISP IP Address,model_isp_ip_address,base.group_user,1,1,1,1

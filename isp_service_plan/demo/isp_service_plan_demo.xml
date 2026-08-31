@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="product_isp_plan_10mb" model="product.template">
+        <field name="name">Internet Fibra 10 Mbps</field>
+        <field name="type">service</field>
+        <field name="list_price">40000</field>
+        <field name="isp_plan" eval="True" />
+        <field name="isp_periodicity">monthly</field>
+        <field name="isp_bandwidth_download">10.0</field>
+        <field name="isp_bandwidth_upload">2.0</field>
+    </record>
+
+    <record id="product_isp_plan_20mb" model="product.template">
+        <field name="name">Internet Fibra 20 Mbps</field>
+        <field name="type">service</field>
+        <field name="list_price">55000</field>
+        <field name="isp_plan" eval="True" />
+        <field name="isp_periodicity">monthly</field>
+        <field name="isp_bandwidth_download">20.0</field>
+        <field name="isp_bandwidth_upload">5.0</field>
+    </record>
+
+    <record id="product_isp_plan_50mb" model="product.template">
+        <field name="name">Internet Fibra 50 Mbps</field>
+        <field name="type">service</field>
+        <field name="list_price">80000</field>
+        <field name="isp_plan" eval="True" />
+        <field name="isp_periodicity">monthly</field>
+        <field name="isp_bandwidth_download">50.0</field>
+        <field name="isp_bandwidth_upload">10.0</field>
+    </record>
+
+    <record id="product_isp_plan_100mb" model="product.template">
+        <field name="name">Internet Fibra 100 Mbps</field>
+        <field name="type">service</field>
+        <field name="list_price">95000</field>
+        <field name="isp_plan" eval="True" />
+        <field name="isp_periodicity">monthly</field>
+        <field name="isp_bandwidth_download">100.0</field>
+        <field name="isp_bandwidth_upload">25.0</field>
+    </record>
+
+    <record id="product_isp_plan_200mb" model="product.template">
+        <field name="name">Internet Fibra 200 Mbps</field>
+        <field name="type">service</field>
+        <field name="list_price">125000</field>
+        <field name="isp_plan" eval="True" />
+        <field name="isp_periodicity">monthly</field>
+        <field name="isp_bandwidth_download">200.0</field>
+        <field name="isp_bandwidth_upload">50.0</field>
+    </record>
+
+    <record id="product_static_ip" model="product.template">
+        <field name="name">IP Fija</field>
+        <field name="type">service</field>
+        <field name="list_price">10000</field>
+    </record>
+
+    <record id="product_wifi_extender" model="product.template">
+        <field name="name">Extensor WiFi</field>
+        <field name="type">service</field>
+        <field name="list_price">5000</field>
+    </record>
+
+    <record id="product_router_wifi" model="product.template">
+        <field name="name">Router WiFi 5G</field>
+        <field name="type">service</field>
+        <field name="list_price">15000</field>
+    </record>
+
+    <record id="product_installation" model="product.template">
+        <field name="name">Instalación</field>
+        <field name="type">service</field>
+        <field name="list_price">50000</field>
+    </record>
+
+    <record id="isp_plan_extra_static_ip" model="isp.plan.extra">
+        <field name="name">IP Fija</field>
+        <field name="plan_id" ref="product_isp_plan_20mb" />
+        <field name="product_id" ref="product_static_ip" />
+    </record>
+
+    <record id="isp_plan_extra_wifi_extender" model="isp.plan.extra">
+        <field name="name">Extensor WiFi</field>
+        <field name="plan_id" ref="product_isp_plan_50mb" />
+        <field name="product_id" ref="product_wifi_extender" />
+    </record>
+
+    <record id="isp_plan_extra_static_ip_50" model="isp.plan.extra">
+        <field name="name">IP Fija</field>
+        <field name="plan_id" ref="product_isp_plan_50mb" />
+        <field name="product_id" ref="product_static_ip" />
+    </record>
+
+    <record id="isp_plan_extra_router_100" model="isp.plan.extra">
+        <field name="name">Router WiFi 5G</field>
+        <field name="plan_id" ref="product_isp_plan_100mb" />
+        <field name="product_id" ref="product_router_wifi" />
+    </record>
+
+    <record id="isp_plan_extra_router_200" model="isp.plan.extra">
+        <field name="name">Router WiFi 5G</field>
+        <field name="plan_id" ref="product_isp_plan_200mb" />
+        <field name="product_id" ref="product_router_wifi" />
+    </record>
+
+    <record id="isp_plan_extra_installation_10" model="isp.plan.extra">
+        <field name="name">Instalación</field>
+        <field name="plan_id" ref="product_isp_plan_10mb" />
+        <field name="product_id" ref="product_installation" />
+    </record>
+</odoo>

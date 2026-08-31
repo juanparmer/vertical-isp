@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <odoo noupdate="1">
+        <record id="seq_isp_suspension_event" model="ir.sequence">
+            <field name="name">ISP Suspension Event</field>
+            <field name="code">isp.suspension.event</field>
+            <field name="prefix">SUS-</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False" />
+        </record>
+    </odoo>
+</odoo>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_product_template_isp_form" model="ir.ui.view">
+        <field name="name">product.template.isp.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="ISP Plan" name="isp_plan" invisible="isp_plan == False">
+                    <group>
+                        <group>
+                            <field name="isp_plan" />
+                            <field name="isp_periodicity" />
+                        </group>
+                        <group>
+                            <field name="isp_bandwidth_download" />
+                            <field name="isp_bandwidth_upload" />
+                        </group>
+                    </group>
+                    <separator string="Additional Products" />
+                    <field name="isp_plan_extra_ids">
+                        <list editable="bottom">
+                            <field name="sequence" />
+                            <field name="name" />
+                            <field name="product_id" />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_isp_plan" model="ir.actions.act_window">
+        <field name="name">ISP Plans</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('isp_plan', '=', True)]</field>
+        <field name="context">{'search_default_isp_plans': 1}</field>
+    </record>
+
+    <record id="view_product_template_isp_search" model="ir.ui.view">
+        <field name="name">product.template.isp.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='filter_to_sell']" position="after">
+                <filter
+                    string="ISP Plans"
+                    name="isp_plans"
+                    domain="[('isp_plan', '=', True)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_isp_plan"
+        name="ISP Plans"
+        parent="isp_network_node.menu_isp_commercial"
+        action="action_isp_plan"
+        sequence="10"
+    />
+</odoo>

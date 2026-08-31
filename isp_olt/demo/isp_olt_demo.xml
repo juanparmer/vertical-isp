@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="isp_olt_central" model="isp.olt">
+        <field name="name">OLT Central</field>
+        <field name="node_id" ref="isp_network_node.isp_network_node_manizales" />
+        <field name="vendor">generic</field>
+        <field name="model">Generic GPON</field>
+        <field name="host">10.0.0.10</field>
+        <field name="port">22</field>
+        <field name="username">admin</field>
+    </record>
+
+    <record id="isp_olt_huawei" model="isp.olt">
+        <field name="name">OLT Huawei Manizales</field>
+        <field name="node_id" ref="isp_network_node.isp_network_node_manizales" />
+        <field name="vendor">huawei</field>
+        <field name="model">MA5608T</field>
+        <field name="host">10.0.0.11</field>
+        <field name="port">22</field>
+        <field name="username">admin</field>
+    </record>
+
+    <record id="isp_olt_profile_generic" model="isp.olt.profile">
+        <field name="name">Perfil GPON Genérico</field>
+        <field name="vendor">generic</field>
+        <field name="onu_template">gen-config-basic</field>
+    </record>
+
+    <record id="isp_olt_profile_huawei_hg8310m" model="isp.olt.profile">
+        <field name="name">Perfil Huawei HG8310M</field>
+        <field name="vendor">huawei</field>
+        <field name="onu_template">HG8310M voice</field>
+    </record>
+
+    <record id="isp_onu_huawei_1" model="isp.onu">
+        <field name="name">485754436A8C4E23</field>
+        <field name="olt_id" ref="isp_olt_huawei" />
+        <field name="olt_port">0/2</field>
+        <field name="olt_pon">1</field>
+        <field name="state">signal_loss</field>
+        <field name="rx_power">-29.0</field>
+    </record>
+
+    <record id="isp_onu_huawei_2" model="isp.onu">
+        <field name="name">48575443AF34E201</field>
+        <field name="olt_id" ref="isp_olt_huawei" />
+        <field name="olt_port">0/2</field>
+        <field name="olt_pon">2</field>
+        <field name="state">inactive</field>
+    </record>
+</odoo>

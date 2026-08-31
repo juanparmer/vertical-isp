@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="isp_network_node_colombia" model="isp.network.node">
+        <field name="name">Nodo Central Caldas</field>
+        <field name="code">CAL-01</field>
+        <field name="node_type">fiber</field>
+        <field name="capacity">500</field>
+    </record>
+
+    <record id="isp_network_node_manizales" model="isp.network.node">
+        <field name="name">Nodo Manizales Sur</field>
+        <field name="code">MAN-02</field>
+        <field name="node_type">fiber</field>
+        <field name="parent_id" ref="isp_network_node_colombia" />
+        <field name="capacity">250</field>
+    </record>
+
+    <record id="isp_network_node_pereira" model="isp.network.node">
+        <field name="name">Nodo Pereira Aeropuerto</field>
+        <field name="code">PER-03</field>
+        <field name="node_type">fiber</field>
+        <field name="parent_id" ref="isp_network_node_colombia" />
+        <field name="capacity">150</field>
+    </record>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_isp_olt,ISP OLT,model_isp_olt,base.group_user,1,1,1,1
+access_isp_olt_profile,ISP OLT Profile,model_isp_olt_profile,base.group_user,1,1,1,1
+access_isp_onu,ISP ONU,model_isp_onu,base.group_user,1,1,1,1
